@@ -6,4 +6,10 @@ repositories {
 
 dependencies {
   compile 'org.codehaus.groovy:groovy:2.4.8'
+  compile 'org.apache.geode:geode-core:1.1.0'
+}
+
+task runScript (dependsOn: 'classes', type: JavaExec) {
+  main = 'main'
+  classpath = sourceSets.main.runtimeClasspath
 }

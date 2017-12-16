@@ -35,18 +35,19 @@ PdxInstance instanceOfFoo = cache.createPdxInstanceFactory("Foo")
   .writeString("qux", "3")
   .create()
 
-PdxInstance instance = cache.createPdxInstanceFactory("Bar")
+PdxInstance instanceOfBar = cache.createPdxInstanceFactory("Bar")
   .writeString("dog", "bark")
   .writeObject("foo", instanceOfFoo)
   .create()
 
-def o = new DataBag(pdx: instanceOfFoo)
+def Foo = new DataBag(pdx: instanceOfFoo)
 
-println o.bar // prints 1
-println o.baz // prints 2
-println o.qux // prints 3
-println o.nah // prints null
+println Foo.bar // prints 1
+println Foo.baz // prints 2
+println Foo.qux // prints 3
+println Foo.nah // prints null
 
-def x = new DataBag(pdx: instance)
-println x.dog
-println x.foo.bar // prints 1
+def Bar = new DataBag(pdx: instanceOfBar)
+println Bar.dog
+println Bar.foo.bar // prints 1
+
